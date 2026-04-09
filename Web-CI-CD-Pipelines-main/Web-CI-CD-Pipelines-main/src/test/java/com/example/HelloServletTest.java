@@ -1,0 +1,36 @@
+package com.example;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+import org.junit.jupiter.api.Test;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class HelloServletTest {
+
+    @Test
+    public void testDoGet() throws Exception {
+        HelloServlet servlet = new HelloServlet();
+
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpServletResponse response = mock(HttpServletResponse.class);
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+
+        when(response.getWriter()).thenReturn(writer);
+
+        servlet.doGet(request, response);
+
+        writer.flush();
+
+        verify(response).setContentType("text/html");
+        assert stringWriter.toString().contains("Hello from Servlet");
+    }
+}
