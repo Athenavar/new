@@ -1,0 +1,43 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class GradeTest {
+
+    @Test
+    void testGradeA() {
+        assertEquals('A', Grade.gradeFunction(95));
+        assertEquals('A', Grade.gradeFunction(90));
+    }
+
+    @Test
+    void testGradeB() {
+        assertEquals('B', Grade.gradeFunction(85));
+        assertEquals('B', Grade.gradeFunction(80));
+    }
+
+    @Test
+    void testGradeC() {
+        assertEquals('C', Grade.gradeFunction(75));
+        assertEquals('C', Grade.gradeFunction(70));
+    }
+
+    @Test
+    void testGradeD() {
+        assertEquals('D', Grade.gradeFunction(65));
+        assertEquals('D', Grade.gradeFunction(60));
+    }
+
+    @Test
+    void testGradeF() {
+        assertEquals('F', Grade.gradeFunction(50));
+        assertEquals('F', Grade.gradeFunction(0));
+    }
+
+    @Test
+    void testBoundaryValues() {
+        assertEquals('A', Grade.gradeFunction(89.99 + 0.01)); // 90
+        assertEquals('B', Grade.gradeFunction(79.99 + 0.01)); // 80
+        assertEquals('C', Grade.gradeFunction(69.99 + 0.01)); // 70
+        assertEquals('D', Grade.gradeFunction(59.99 + 0.01)); // 60
+    }
+}
