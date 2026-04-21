@@ -1,0 +1,6 @@
+user name : bnmit
+password : personal access token
+
+
+docker login -u bnmit
+dckr_pat_WieuG1MaTGiu4i_mb_aGNzPHnyk
